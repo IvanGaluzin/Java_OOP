@@ -1,7 +1,6 @@
 package OOP;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
@@ -9,10 +8,14 @@ public class Main {
 
         heroesWhite = generateCommand(0);
         heroesBlack = generateCommand(3);
-
+        
+        System.out.println("-----------------------------------------");
         heroesWhite.forEach(n -> System.out.println(n.toString())); 
-        System.out.println("**************************");
-        heroesBlack.forEach(n -> System.out.println(n.toString())); 
+        System.out.println();
+        System.out.println("VS");
+        System.out.println();
+        heroesBlack.forEach(n -> System.out.println(n.toString()));
+        System.out.println("-----------------------------------------");
 
     }
 
