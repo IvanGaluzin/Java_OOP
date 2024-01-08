@@ -8,7 +8,7 @@ public class Monk extends Hero implements Healer {
 
     public Monk(String nameHero, int posX, int posY) {
         super(50, 50, 1, new int[]{-35, -30}, nameHero, posX, posY);
-
+        Vector2D position;
     }
     Random random = new Random();
     @Override

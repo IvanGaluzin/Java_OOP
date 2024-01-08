@@ -6,53 +6,51 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
 
-        heroesWhite = generateCommand(0);
-        heroesBlack = generateCommand(3);
+        heroesWhite = generateCommand(0,0);
+        heroesBlack = generateCommand(3,9);
         
-        System.out.println("-----------------------------------------");
-        heroesWhite.forEach(n -> System.out.println(n.toString())); 
-        System.out.println();
-        System.out.println("VS");
-        System.out.println();
-        heroesBlack.forEach(n -> System.out.println(n.toString()));
-        System.out.println("-----------------------------------------");
-
+       // System.out.println("-----------------------------------------");
+       // heroesWhite.forEach(n -> System.out.println(n.toString())); // Белая команда
+       // System.out.println();
+       // System.out.println("VS");                                // Печать команд
+       // System.out.println();
+       // heroesBlack.forEach(n -> System.out.println(n.toString()));   // Черная команда
+       // System.out.println("-----------------------------------------");
+        heroesBlack.forEach(n -> n.printEnemysDistance(heroesWhite));
     }
 
     static ArrayList<Hero> heroesWhite = new ArrayList<>();
     static ArrayList<Hero> heroesBlack = new ArrayList<>();
 
-    static ArrayList<Hero> generateCommand(int n){
+    static ArrayList<Hero> generateCommand(int n, int y){
         ArrayList<Hero> commandHeroes = new ArrayList<>();
         Random random = new Random();
         int rand;
-
 
         for (int i = 0; i < 10; i++) {
             rand = random.nextInt(1,5)+n;
             switch (rand){
                 case 1:
-                    commandHeroes.add(new Crossbower(getName(), i, i));
+                    commandHeroes.add(new Crossbower(getName(), i, y));
                     break;
                 case 2:
-                    commandHeroes.add(new Monk(getName(), i, i));
+                    commandHeroes.add(new Monk(getName(), i, y));
                     break;
                 case 4:
-                    commandHeroes.add(new Peasant(getName(), i, i));
+                    commandHeroes.add(new Peasant(getName(), i, y));
                     break;
                 case 3:
-                    commandHeroes.add(new Pikeman(getName(), i, i));
+                    commandHeroes.add(new Pikeman(getName(), i, y));
                     break;
                 case 5:
-                    commandHeroes.add(new Rogue(getName(), i, i));
+                    commandHeroes.add(new Rogue(getName(), i, y));
                     break;
                 case 6:
-                    commandHeroes.add(new Sniper(getName(), i, i));
+                    commandHeroes.add(new Sniper(getName(), i, y));
                     break;
                 case 7:
-                    commandHeroes.add(new Wizard(getName(), i, i));
+                    commandHeroes.add(new Wizard(getName(), i, y));
                     break;
-
             }
         }
         return commandHeroes;

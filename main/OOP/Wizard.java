@@ -8,6 +8,7 @@ public class Wizard extends Hero implements Healer {
 
     public Wizard(String nameHero, int posX, int posY) {
         super(50, 50, 1, new int[]{-35, -30}, nameHero, posX, posY);
+        Vector2D position;
     }
     Random random = new Random();
 

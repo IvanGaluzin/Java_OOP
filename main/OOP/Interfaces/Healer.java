@@ -1,6 +1,5 @@
 package OOP.Interfaces;
 
-
 import OOP.Hero;
 
 public interface Healer {
