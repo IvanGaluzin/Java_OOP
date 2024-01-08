@@ -8,7 +8,6 @@ public class Rogue extends Hero implements Warrior {
 
     public Rogue(String nameHero, int posX, int posY) {
         super(100, 100, 5, new int[]{20, 30}, nameHero, posX, posY);
-        Vector2D position;
     }
 Random random = new Random();
 
