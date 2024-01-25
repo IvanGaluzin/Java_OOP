@@ -14,7 +14,6 @@ public class Peasant extends Hero {
         return ("Крестьянин: " + nameHero + " здоровье: " + health + "/" + healthMax + " броня: " + armor);
     }
 
-
     public void getArrow(Hero target) {
         if (target == null) {
             return;
