@@ -1,8 +1,8 @@
 package OOP;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-
 import OOP.Interfaces.GameI;
 
 public abstract class Hero implements GameI {
@@ -76,19 +76,6 @@ public abstract class Hero implements GameI {
     }
 
     public abstract String getType();
-    /*
-    etNearestEnemy(ArrayList<HeroBase> enemies) {
-        HeroBase nearestEnemy = null;
-        for (HeroBase enemy : enemies) {
-            if (enemy.liveStatus) {
-                if (nearestEnemy == null || position.distance(enemy.position) < position.distance(nearestEnemy.position)) {
-                    nearestEnemy = enemy;
-                }
-            }
-        }
-        return nearestEnemy;
-    }
-     */
 
     public int[] getCoords() {
         return new int[]{position.posX, position.posY};
@@ -102,6 +89,4 @@ public abstract class Hero implements GameI {
         return health;
     }
     public abstract String getInfo();
-
-
 }

@@ -2,22 +2,8 @@ package OOP.TypeH;
 
 import OOP.Hero;
 import OOP.Vector2D;
-
 import java.util.ArrayList;
 
-/**
- * Описание структуры класса
- * Абстрактный класс, описывающий тип героев, которые будут наносить урон в ближнем бою
- * Каждый элемент данного класса имеет следующие дополнительные поля:
- * - шаг (int step)
- * <p>
- * Наследники HealerHero:
- * - Pikeman
- * - Rogue
- * <p>
- * Методы:
- * getDamage - метод нанесения урона вражескому герою (в ближнем бою)
- */
 public abstract class MeleeHero extends Hero {
     int step, damagePoint;
 
@@ -51,10 +37,8 @@ public abstract class MeleeHero extends Hero {
         return heroTMP;
     }
 
-
-
     public Vector2D getStepMDD(Hero enemy) {
-        Vector2D delta = position.getDelta(enemy.position); //return new Vector2(posX - posEnemy.posX, posY - posEnemy.posY);
+        Vector2D delta = position.getDelta(enemy.position);
         Vector2D tmpVector2 = new Vector2D(position.posX, position.posY);
         if (delta.posX < 0) {
             tmpVector2.posX++;
@@ -87,7 +71,6 @@ public abstract class MeleeHero extends Hero {
         Hero tmpHero = findBestEnemyMDD(teamEnemy);
         if (position.rangeEnemy(tmpHero.position) < 2) {
             getDamage(tmpHero);
-            //System.out.println("Нанесен урон" + this.damagePoint);
         } else {
             Vector2D tmpVec = getStepMDD(tmpHero);
             boolean step = true;

@@ -2,7 +2,6 @@ package OOP.Heroes;
 
 import OOP.TypeH.RangeHero;
 
-
 public class Crossbower extends RangeHero {
 
     public Crossbower(String nameHero, int posX, int posY) {

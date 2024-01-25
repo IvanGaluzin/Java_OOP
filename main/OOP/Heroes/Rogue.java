@@ -1,6 +1,5 @@
 package OOP.Heroes;
 
-
 import OOP.TypeH.MeleeHero;
 
 public class Rogue extends MeleeHero {

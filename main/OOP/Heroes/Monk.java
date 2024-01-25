@@ -6,7 +6,6 @@ public class Monk extends HealerHero {
 
     public Monk(String nameHero, int posX, int posY) {
         super(50, 50, 1, new int[]{10, 15}, nameHero, posX, posY, 50, 50);
-
     }
 
     @Override

@@ -6,11 +6,7 @@ import OOP.Heroes.Pikeman;
 import OOP.Heroes.Rogue;
 import OOP.Heroes.Sniper;
 import OOP.Heroes.Wizard;
-
-
 import OOP.TypeH.Peasant;
-
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -26,12 +22,7 @@ public class Main {
         twoCommands.addAll(heroesBlack);
         twoCommands.addAll(heroesWhite);
         twoCommands.sort(((o1, o2) -> o2.getInitiative()- o1.getInitiative())); //сортировка лямбдой
-try (//        twoCommands.sort(new Comparator<Hero>() {
-        //            @Override
-        //            public int compare(Hero o1, Hero o2) {
-        //                return o2.getInitiative() - o1.getInitiative();
-        //            }
-        //        });
+try (
         Scanner scanner = new Scanner(System.in)) {
             boolean flag;
             while (true){
@@ -60,14 +51,6 @@ try (//        twoCommands.sort(new Comparator<Hero>() {
             }
         }
     }
-
-
-
-//        twoCommands.forEach(n-> System.out.println(n.getInitiative())); // Печать инициативы
-//
-//        heroesWhite.forEach(n -> System.out.println(n.toString())); // Печать команды
-//        System.out.println("**************************");
-//        heroesBlack.forEach(n -> n.printEnemysDistance(heroesWhite)); // Печать расстояния до противника
 
 public static boolean gameOverWhite(){
     for (Hero hero : heroesWhite) {
