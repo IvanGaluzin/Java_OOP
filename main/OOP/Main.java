@@ -1,35 +1,101 @@
 package OOP;
 
+import OOP.Heroes.Crossbower;
+import OOP.Heroes.Monk;
+import OOP.Heroes.Pikeman;
+import OOP.Heroes.Rogue;
+import OOP.Heroes.Sniper;
+import OOP.Heroes.Wizard;
+
+
+import OOP.TypeH.Peasant;
+
+
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
 
-        heroesWhite = generateCommand(0,0);
-        heroesBlack = generateCommand(3,9);
-        
-       // System.out.println("-----------------------------------------");
-       // heroesWhite.forEach(n -> System.out.println(n.toString())); // Белая команда
-       // System.out.println();
-       // System.out.println("VS");                                // Печать команд
-       // System.out.println();
-       // heroesBlack.forEach(n -> System.out.println(n.toString()));   // Черная команда
-       // System.out.println("-----------------------------------------");
-        heroesBlack.forEach(n -> n.printEnemysDistance(heroesWhite));
+        heroesWhite = generateCommand(0,1);
+        heroesBlack = generateCommand(3,10);
+        twoCommands.addAll(heroesBlack);
+        twoCommands.addAll(heroesWhite);
+        twoCommands.sort(((o1, o2) -> o2.getInitiative()- o1.getInitiative())); //сортировка лямбдой
+try (//        twoCommands.sort(new Comparator<Hero>() {
+        //            @Override
+        //            public int compare(Hero o1, Hero o2) {
+        //                return o2.getInitiative() - o1.getInitiative();
+        //            }
+        //        });
+        Scanner scanner = new Scanner(System.in)) {
+            boolean flag;
+            while (true){
+                View.view();
+                if (gameOverBlack()){
+                    flag = true;
+                    break;
+                }
+                if (gameOverWhite()){
+                    flag = false;
+                    break;
+                }
+                for (Hero h: twoCommands) {
+                    if (heroesBlack.contains(h)){
+                        h.gameStep(heroesWhite, heroesBlack);
+                    } else {
+                        h.gameStep(heroesBlack, heroesWhite);
+                    }
+                }
+                scanner.nextLine();
+            }
+            if (flag){
+                System.out.println("Победила команда белых");
+            } else {
+                System.out.println("Победила команда черных");
+            }
+        }
     }
 
-    static ArrayList<Hero> heroesWhite = new ArrayList<>();
-    static ArrayList<Hero> heroesBlack = new ArrayList<>();
 
-    static ArrayList<Hero> generateCommand(int n, int y){
+
+//        twoCommands.forEach(n-> System.out.println(n.getInitiative())); // Печать инициативы
+//
+//        heroesWhite.forEach(n -> System.out.println(n.toString())); // Печать команды
+//        System.out.println("**************************");
+//        heroesBlack.forEach(n -> n.printEnemysDistance(heroesWhite)); // Печать расстояния до противника
+
+public static boolean gameOverWhite(){
+    for (Hero hero : heroesWhite) {
+        if (hero.health > 0) return false;
+    }
+    return true;
+}
+public static boolean gameOverBlack(){
+        for (Hero hero : heroesBlack) {
+            if (hero.health > 0) return false;
+        }
+        return true;
+    }
+
+   public static ArrayList<Hero> heroesWhite = new ArrayList<>();
+   public static ArrayList<Hero> heroesBlack = new ArrayList<>();
+
+   public static ArrayList<Hero> twoCommands = new ArrayList<>();
+
+    static ArrayList<Hero> generateCommand(int n, int y) {
         ArrayList<Hero> commandHeroes = new ArrayList<>();
         Random random = new Random();
         int rand;
 
-        for (int i = 0; i < 10; i++) {
-            rand = random.nextInt(1,5)+n;
-            switch (rand){
+
+        for (int i = 1; i < 11; i++) {
+            rand = random.nextInt(1, 5) + n;
+            switch (rand) {
                 case 1:
                     commandHeroes.add(new Crossbower(getName(), i, y));
                     break;
@@ -51,12 +117,13 @@ public class Main {
                 case 7:
                     commandHeroes.add(new Wizard(getName(), i, y));
                     break;
+
             }
         }
         return commandHeroes;
     }
 
-    static String getName(){
-        return NameOfHeroes.values()[new Random().nextInt(NameOfHeroes.values().length-1)].name();
+    static String getName() {
+        return NameOfHeroes.values()[new Random().nextInt(NameOfHeroes.values().length - 1)].name();
     }
 }
